@@ -1,8 +1,8 @@
 <?php
 include "conecta.php";
-$cd_orcamento = $_REQUEST["cd_orcamento"];
-$cd_produto   = $_REQUEST["cd_produto"];
-$acao         = $_REQUEST["acao"];
+$cd_orcamento = isset($_REQUEST["cd_orcamento"]) ? $_REQUEST["cd_orcamento"] : 0;
+$cd_produto = $acao = isset($_GET['cd_produto']) ? $_GET['cd_produto'] : '';
+$acao = isset($_GET['acao']) ? $_GET['acao'] : '';
 
 if ($acao == "insere_produto")
 {
@@ -27,7 +27,7 @@ if ($acao == "salvar")
 	$SQL = "select * from orcamentos where cd_orcamento= $cd_orcamento ";
 	$RSS = mysqli_query($conexao,$SQL)or print(mysqli_error());
 	$RSX = mysqli_fetch_assoc($RSS); 	
-	If ( $RSX["cd_orcamento"] == $cd_orcamento )
+	if ( $RSX["cd_orcamento"] == $cd_orcamento )
 	{
 		$SQL  = "update orcamentos set ";
 		$SQL .= "cd_cliente_orcamento='".$_REQUEST['cd_cliente_orcamento']."',";
@@ -84,7 +84,7 @@ $RS = mysqli_fetch_assoc($RSS);
             </div>
 
             <div class="col-3">
-              <label for="email" class="form-label">Valor <span class="text-muted">(Optional)</span></label>
+              <label for="email" class="form-label">Valor</label>
               <input type="number" class="form-control" id="vl_valor" name="vl_valor" value="<? echo $RS["vl_valor"]; ?>">
             </div>
 
@@ -106,7 +106,7 @@ $RS = mysqli_fetch_assoc($RSS);
     </div>
 
     <div class="col-md-4 col-lg-4" style='margin:6px;background-color:#EEEEEE;border-radius:9px;'>
-    <center><h3 style='font-size:14px;'><b>Disponíveis </b></h3></center>
+    <center><h3 style='font-size:14px;'>Disponíveis </h3></center>
     <table  style="width:100%">        
         <tbody>
         <?
@@ -116,7 +116,8 @@ $RS = mysqli_fetch_assoc($RSS);
           {
             echo "<tr onClick='seleciona(".$RP["cd_produto"].")' >";
             echo "<td>".$RP["ds_produto"]."</td>";
-            echo "<td>".$RP["vl_quantidade"]."</td>";
+            echo "<td>".$RP["vl_estoque"]."</td>";
+            echo "<td>".$RP["vl_venda"]."</td>";
             echo "</tr>";
           }
         ?>
@@ -125,9 +126,9 @@ $RS = mysqli_fetch_assoc($RSS);
     </div>
 
     <div class="col-md-7 col-lg-7" style='margin:6px;background-color:#EEEEEE;border-radius:9px;'>
-    <center><h3 style='font-size:14px;'><b>Selecionados </b></h3></center>
+    <center><h3 style='font-size:14px;'>Selecionados </h3></center>
     <table  style="width:100%">        
-    <tbody>
+        <tbody>
         <?
           $SQL = "select * from orcamento_itens,produtos where cd_orcamento_oi = $cd_orcamento and cd_produto_oi=cd_produto order by ds_produto";
           $RPP = mysqli_query($conexao,$SQL)or print(mysqli_error());
@@ -135,8 +136,8 @@ $RS = mysqli_fetch_assoc($RSS);
           {
             echo "<tr onClick='removendo(".$RP["cd_produto"].")' >";
             echo "<td>".$RP["ds_produto"]."</td>";
-            echo "<td>".$RP["vl_quantidade"]."</td>";
-            echo "<td>".$RP["vl_unitario"]."</td>";
+            echo "<td>".$RP["vl_estoque"]."</td>";
+            echo "<td>".$RP["vl_venda"]."</td>";
             echo "</tr>";
           }
         ?>

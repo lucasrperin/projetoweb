@@ -1,7 +1,7 @@
 <?php
 include "conecta.php";
 $cd_cliente = intval($_REQUEST["cd_cliente"]);
-$acao       = $_REQUEST["acao"];
+$acao = isset($_GET['acao']) ? $_GET['acao'] : '';
 
 if ($acao == "excluir")
 {

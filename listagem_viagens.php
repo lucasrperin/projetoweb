@@ -20,10 +20,10 @@
                 <th>Origem</th>
                 <th>Destino</th>
                 <th>Placa</th>
-				<th>Carga</th>
-				<th>Valor</th>
-				<th>Início</th>
-				<th>Fim</th>
+                <th>Carga</th>
+                <th>Valor</th>
+                <th>Início</th>
+                <th>Fim</th>
             </tr>
         </thead>
         <tbody>
@@ -38,10 +38,10 @@
             echo "<td>".$RS["ds_origem"]."</td>";
             echo "<td>".$RS["ds_destino"]."</td>";
             echo "<td>".$RS["ds_placa"]."</td>";
-			echo "<td>".$RS["ds_carga"]."</td>";
-			echo "<td>".$RS["ds_valor"]."</td>";
-			echo "<td>".$RS["dt_inicio"]."</td>";
-			echo "<td>".$RS["dt_fim"]."</td>";
+            echo "<td>".$RS["ds_carga"]."</td>";
+            echo "<td>".$RS["ds_valor"]."</td>";
+            echo "<td>".$RS["dt_inicio"]."</td>";
+            echo "<td>".$RS["dt_fim"]."</td>";
             echo "</tr>";
           }
         ?>

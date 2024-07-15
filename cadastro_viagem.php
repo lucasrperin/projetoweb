@@ -1,7 +1,7 @@
 <?php
 include "conecta.php";
 $cd_viagem = $_REQUEST["cd_viagem"];
-$acao       = $_REQUEST["acao"];
+$acao = isset($_GET['acao']) ? $_GET['acao'] : '';
 
 if ($acao == "excluir")
 {
@@ -83,7 +83,18 @@ $RS = mysqli_fetch_assoc($RSS);
 			<div class="row g-3">
 				<div class="col-sm-3">
 				  <label for="firstName" class="form-label">Placa</label>
-				  <input type="text" class="form-control" id="ds_placa" name="ds_placa" placeholder="Placa" value="<?php echo $RS["ds_placa"]; ?>" maxlength="7" required>
+				  <select name='ds_placa' id='ds_placa' class="form-control">
+					<?
+					$SQL = "select * from veiculos order by ds_placa";
+					$RRR = mysqli_query($conexao,$SQL)or print(mysqli_error());
+					while($RR = mysqli_fetch_array($RRR))
+					{
+						echo "<option value='".$RR["cd_veiculo"]."' ";
+						if ($RS["ds_placa"]==$RR["cd_veiculo"]) { echo " SELECTED "; }
+						echo ">".$RR["ds_placa"]."</option>";
+					}
+					?>
+					</select>
 				  <div class="invalid-feedback">
 					A placa é obrigatória.
 				  </div>

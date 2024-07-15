@@ -79,7 +79,7 @@ INSERT INTO `orcamento_itens` (`cd_oi`, `cd_orcamento_oi`, `cd_produto_oi`, `ds_
 CREATE TABLE IF NOT EXISTS `produtos` (
   `cd_produto` int(11) NOT NULL AUTO_INCREMENT,
   `ds_produto` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `vl_quantidade` int(11) NOT NULL DEFAULT 0,
+  `vl_estoque` int(11) NOT NULL DEFAULT 0,
   `vl_venda` numeric(18,4) NOT NULL DEFAULT 0,
   `ds_cor` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `ds_categoria` varchar(50) COLLATE latin1_general_ci NOT NULL,
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- Copiando dados para a tabela sistema.produtos: ~5 rows (aproximadamente)
-INSERT INTO `produtos` (`cd_produto`, `ds_produto`, `vl_quantidade`, `vl_venda` , `ds_cor`, `ds_categoria`, `ds_unidade`) VALUES
+INSERT INTO `produtos` (`cd_produto`, `ds_produto`, `vl_estoque`, `vl_venda` , `ds_cor`, `ds_categoria`, `ds_unidade`) VALUES
 	(1, 'abacaxi', 38, 11.90, 'verde', 'fruta', 'un'),
 	(2, 'bananaa', 31, 12.90, 'amarelas', 'frutas', 'cxx'),
 	(3, 'uva', 11, 13.90, 'preta', 'frutas', 'kg'),

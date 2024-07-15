@@ -1,7 +1,7 @@
 <?php
 include "conecta.php";
 $cd_produto = $_REQUEST["cd_produto"];
-$acao       = $_REQUEST["acao"];
+$acao = isset($_GET['acao']) ? $_GET['acao'] : '';
 
 if ($acao == "excluir")
 {
@@ -58,7 +58,7 @@ $RS = mysqli_fetch_assoc($RSS);
     <div class="row g-5">
       <div class="col-md-12 col-lg-12">
         <form class="needs-validation" novalidate action="menu.php">
-          <input type='hidden'   name='cd_produto' id='cd_produto' value="<?php echo $cd_produto; ?>">
+          <input type='hidden' name='cd_produto' id='cd_produto' value="<?php echo $cd_produto; ?>">
           <input type='hidden' name='acao'       id='acao'       value='salvar'>
           <input type='hidden' name='modulo'     id='modulo'     value='cadastro_produto'>
           <div class="row g-3">
@@ -92,13 +92,10 @@ $RS = mysqli_fetch_assoc($RSS);
 
             <div class="col-4">
               <label for="unidade" class="form-label">Unidade <span class="text-muted"></span></label>
-              <input type="unidade" class="form-control" id="ds_unidade" name="ds_unidade" placeholder="unidade@unidade.com" value="<?php echo $RS["ds_unidade"]; ?>">
+              <input type="unidade" class="form-control" id="ds_unidade" name="ds_unidade" placeholder="Unidade" value="<?php echo $RS["ds_unidade"]; ?>">
             </div>
-
-
           </div>
           <hr class="my-4">
-
           <div class="row g-5">
             <div class="col-6">
               <button class="w-100 btn btn-primary btn-lg" type="submit">Salvar os dados</button>

@@ -1,7 +1,7 @@
 <?php
 include "conecta.php";
 $cd_usuario = $_REQUEST["cd_usuario"];
-$acao       = $_REQUEST["acao"];
+$acao = isset($_GET['acao']) ? $_GET['acao'] : '';
 
 if ($acao == "excluir")
 {
