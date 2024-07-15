@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{
+          display: flex;
+          align-items: center; /* Centraliza verticalmente */
+          justify-content: center; /* Centraliza horizontalmente */
+          height: 100vh; /* Faz com que o corpo ocupe toda a altura da tela */
+          background-color: #B0C4DE;
+        }
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+            background-color:	#008080;
+            border: 2px outset #000000; /* Adiciona uma borda sólida com cor cinza */
+            border-radius: 10px; /* Adiciona bordas arredondadas */
+            box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+        }
+        .form-signin .form-floating {
+            position: relative;
+            margin-bottom: 10px;
+        }
+        .form-signin .form-floating label {
+            position: absolute;
+            top: 0;
+            padding: 7px 10px;
+            font-size: 17px;
+            color: #aab8c2;
+            pointer-events: none;
+            transition: all 0.1s ease-in-out;
+        }
+        .form-signin .form-floating input {
+            height: auto;
+            padding: 10px;
+        }
+        .form-signin .form-floating input:focus {
+            z-index: 2;
+        }
+        .form-signin input[type="email"] {
+            border-radius: 4px 4px 0 0;
+        }
+        .form-signin input[type="password"] {
+            border-top: 0;
+            border-radius: 0 0 4px 4px;
+        }
+      
+    </style>
+</head>
+<body class="text-center">
+    <main class="form-signin">
+        <form action="http://localhost/Aula24-05/erp_bootstrap_01/login.php" method="post">
+            <img class="mb-4" src="../erp_bootstrap_01/assets/brand/logo.jpg" alt="" width="135" height="100">
+            <h1 class="h3 mb-3 fw-normal">Login no sistema</h1>
+            <div class="form-floating">
+                <input type="email" class="form-control" id="ds_email" name="ds_email" placeholder="name@example.com">
+                <label for="ds_email">Email</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="ds_senha" name="ds_senha" placeholder="Senha">
+                <label for="ds_senha">Senha</label>
+            </div>
+            
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
+            <p class="mt-5 mb-3 text-muted">&copy;</p>
+        </form>
+    </main>
+</body>
+</html>
