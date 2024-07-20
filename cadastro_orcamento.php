@@ -54,7 +54,12 @@ $RSS = mysqli_query($conexao,$SQL) or print(mysqli_error());
 $RS = mysqli_fetch_assoc($RSS);	
 ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <center><h2>Orçamento Nº <?php echo $cd_orcamento; ?> </h2></center>
+    <div class="py-5 text-center d-flex justify-content-between align-items-center">
+        <a href="menu.php?modulo=listagem_orcamento" class="btn btn-sm btn-primary">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </a>
+        <h2 class="h2 flex-grow-1 text-center">Orçamento Nº <?php echo $cd_orcamento; ?> </h2>
+    </div>
     <div class="row g-5">
       <div class="col-md-12 col-lg-12">
         <form class="needs-validation" novalidate action="menu.php">
@@ -85,7 +90,7 @@ $RS = mysqli_fetch_assoc($RSS);
 
             <div class="col-3">
               <label for="email" class="form-label">Valor</label>
-              <input type="number" class="form-control" id="vl_valor" name="vl_valor" value="<? echo $RS["vl_valor"]; ?>">
+              <input type="text" class="form-control" id="vl_valor" name="vl_valor" value="<? echo $RS["vl_valor"]; ?>">
             </div>
 
           </div>
@@ -93,7 +98,7 @@ $RS = mysqli_fetch_assoc($RSS);
 
           <div class="row g-5">
             <div class="col-6">
-              <button class="w-100 btn btn-primary btn-lg" type="submit">Salvar os dados</button>
+              <button class="w-100 btn btn-primary btn-lg" type="submit" onclick='window.open("menu.php?menu.php?modulo=listagem_orcamento");'>Salvar os dados</button>
             </div>
             <div class="col-3">
               <button class="w-100 btn btn-primary btn-lg" type="button" onclick='window.open("menu.php?acao=excluir&modulo=cadastro_orcamento&cd_orcamento=<?php echo $cd_orcamento;?>","_self");' >Excluir</button>

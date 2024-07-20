@@ -1,11 +1,11 @@
 <?php $modulo = $_REQUEST["modulo"]; ?> 
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ComércioEXP</title>
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/jquery.dataTables.min.css" rel="stylesheet">
     <script type="text/javascript" language="javascript" src="js/jquery-3.5.1.js"></script>

@@ -13,7 +13,7 @@ if ((strlen($ds_email) > 5) && (strlen($ds_senha) >= 3)) {
         $RSS = mysqli_query($conexao, $SQL) or die(mysqli_error($conexao));
         $RSX = mysqli_fetch_assoc($RSS); 	
         if ($RSX["ds_senha"] == $ds_senha) {      
-            //echo "Login aceito <br><br> Bem vindo";
+            echo "Login aceito <br><br> Bem vindo";
             header("Location: menu.php?modulo=listagem_cliente");
             exit();
         } else {

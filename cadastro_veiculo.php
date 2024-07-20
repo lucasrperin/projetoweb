@@ -44,7 +44,7 @@ $RS = mysqli_fetch_assoc($RSS);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="py-5 text-center d-flex justify-content-between align-items-center">
-        <a href="menu.php?modulo=listagem_veiculo" class="btn btn-sm btn-primary">
+        <a href="menu.php?modulo=listagem_veiculos" class="btn btn-sm btn-primary">
             <i class="fas fa-arrow-left"></i> Voltar
         </a>
         <h2 class="h2 flex-grow-1 text-center">Cadastro do Veículo Nº <?php echo $cd_veiculo; ?> </h2>

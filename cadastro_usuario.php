@@ -21,7 +21,6 @@ if ($acao == "salvar")
 		$SQL .= "ds_email='".str_replace("'","",$_REQUEST['ds_email'])."',	 ";
 		$SQL .= "ds_senha='".str_replace("'","",$_REQUEST['ds_senha'])."' ";
 		$SQL .= "where cd_usuario = '". $RSX["cd_usuario"]."'";
-		 echo $SQL;
 		$RSS = mysqli_query($conexao,$SQL) or print($SQL);  
 		// echo "<script language='JavaScript'>alert('Operacao realizada com sucesso.');</script>";
 	} 
