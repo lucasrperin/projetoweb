@@ -1,6 +1,6 @@
-create schema projetoweb;
+create schema projetoweb1;
 
-use projetoweb;
+use projetoweb1;
 
 -- Copiando estrutura para tabela sistema.cadastros
 CREATE TABLE IF NOT EXISTS `cadastros` (
