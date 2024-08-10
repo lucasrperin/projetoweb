@@ -65,7 +65,7 @@ $RS = mysqli_fetch_assoc($RSS);
                     </div>
                     <div class="col-sm-3">
                         <label for="ds_placa" class="form-label">Placa</label>
-                        <input type="text" class="form-control" id="ds_placa" name="ds_placa" placeholder="Sua Placa" value="<?php echo isset($RS["ds_placa"]) ? $RS["ds_placa"] : ''; ?>" required>
+                        <input type="text" class="form-control" id="ds_placa" name="ds_placa" placeholder="Sua Placa" maxlength="7" value="<?php echo isset($RS["ds_placa"]) ? $RS["ds_placa"] : ''; ?>" required>
                     </div>
                     <div class="col-sm-4">
                         <label for="ds_cor" class="form-label">Cor</label>
@@ -73,7 +73,7 @@ $RS = mysqli_fetch_assoc($RSS);
                     </div>
                     <div class="col-sm-4">
                         <label for="ds_ano" class="form-label">Ano</label>
-                        <input type="text" class="form-control" id="ds_ano" name="ds_ano" placeholder="Seu Ano" value="<?php echo isset($RS["ds_ano"]) ? $RS["ds_ano"] : ''; ?>" required>
+                        <input type="text" class="form-control" id="ds_ano" name="ds_ano" placeholder="Seu Ano" maxlength="4" value="<?php echo isset($RS["ds_ano"]) ? $RS["ds_ano"] : ''; ?>" required>
                     </div>
                     <div class="col-4">
                         <label for="ds_modelo" class="form-label">Modelo</label>

@@ -24,30 +24,36 @@ if ($acao == "excluir")
 
 if ($acao == "salvar")
 {
-	$SQL = "select * from orcamentos where cd_orcamento= $cd_orcamento ";
-	$RSS = mysqli_query($conexao,$SQL)or print(mysqli_error());
-	$RSX = mysqli_fetch_assoc($RSS); 	
-	if ( $RSX["cd_orcamento"] == $cd_orcamento )
-	{
-		$SQL  = "update orcamentos set ";
-		$SQL .= "cd_cliente_orcamento='".$_REQUEST['cd_cliente_orcamento']."',";
-		$SQL .= "vl_valor=".$_REQUEST['vl_valor']." ";
-		$SQL .= "where cd_orcamento = '". $RSX["cd_orcamento"]."'";
-		// echo $SQL;
-		$RSS = mysqli_query($conexao,$SQL) or print($SQL);  
-	} 
-	else
-	{
-		$SQL  = "Insert into orcamentos (dt_orcamento,cd_usuario_orcamento,cd_cliente_orcamento,vl_valor) "; 
-		$SQL .= "VALUES (now(),1,".$_REQUEST['cd_cliente_orcamento'].",".$_REQUEST['vl_valor'].")";
-		$RSS = mysqli_query($conexao,$SQL) or die('erro');
+    $SQL = "select * from orcamentos where cd_orcamento= $cd_orcamento ";
+    $RSS = mysqli_query($conexao,$SQL)or print(mysqli_error());
+    $RSX = mysqli_fetch_assoc($RSS); 	
+    if ($RSX["cd_orcamento"] == $cd_orcamento)
+    {
+        $SQL  = "update orcamentos set ";
+        $SQL .= "cd_cliente_orcamento='".$_REQUEST['cd_cliente_orcamento']."',";
+        $SQL .= "vl_valor=".$_REQUEST['vl_valor']." ";
+        $SQL .= "where cd_orcamento = '". $RSX["cd_orcamento"]."'";
+        $RSS = mysqli_query($conexao,$SQL) or print($SQL);  
+    } 
+    else
+    {
+        $SQL  = "Insert into orcamentos (dt_orcamento,cd_usuario_orcamento,cd_cliente_orcamento,vl_valor) "; 
+        $SQL .= "VALUES (now(),1,".$_REQUEST['cd_cliente_orcamento'].",".$_REQUEST['vl_valor'].")";
+        $RSS = mysqli_query($conexao,$SQL) or die('erro');
 
-		$SQL = "select * from orcamentos order by cd_orcamento desc limit 1";
-		$RSS = mysqli_query($conexao,$SQL)or print(mysqli_error());
-		$RSX = mysqli_fetch_assoc($RSS); 
-		$cd_orcamento = $RSX["cd_orcamento"];
-	}
-} 
+        $SQL = "select * from orcamentos order by cd_orcamento desc limit 1";
+        $RSS = mysqli_query($conexao,$SQL)or print(mysqli_error());
+        $RSX = mysqli_fetch_assoc($RSS); 
+        $cd_orcamento = $RSX["cd_orcamento"];
+    }
+
+    // Redirecionar após um pequeno delay
+    echo "<script>
+        setTimeout(function(){
+            window.location.href = 'menu.php?modulo=listagem_orcamento';
+        }, 500); // 500ms de atraso
+    </script>";
+}
 
 $SQL = "Select * from orcamentos where cd_orcamento = $cd_orcamento";
 $RSS = mysqli_query($conexao,$SQL) or print(mysqli_error());
@@ -69,7 +75,7 @@ $RS = mysqli_fetch_assoc($RSS);
           <div class="row g-3">
             <div class="col-sm-3">
               <label for="firstName" class="form-label">Dia</label>
-              <input type="date" class="form-control" id="dt_orcamento" name="dt_orcamento" value="<?php echo $RS["dt_orcamento"]; ?>" readonly='true'>
+              <input type="date" class="form-control" id="dt_orcamento" name="dt_orcamento" value="<?php echo isset($RS["dt_orcamento"]) ? $RS["dt_orcamento"] : ''; ?>" readonly='true'>
             </div>
 
             <div class="col-sm-6">
@@ -81,7 +87,7 @@ $RS = mysqli_fetch_assoc($RSS);
                while($RR = mysqli_fetch_array($RRR))
                {
                   echo "<option value='".$RR["cd_cliente"]."' ";
-                  if ($RS["cd_cliente_orcamento"]==$RR["cd_cliente"]) { echo " SELECTED "; }
+                  if (isset($RS["cd_cliente_orcamento"]) && $RS["cd_cliente_orcamento"] ==$RR["cd_cliente"]) { echo " SELECTED "; }
                   echo ">".$RR["ds_cliente"]."</option>";
                }
               ?>
@@ -90,7 +96,7 @@ $RS = mysqli_fetch_assoc($RSS);
 
             <div class="col-3">
               <label for="email" class="form-label">Valor</label>
-              <input type="text" class="form-control" id="vl_valor" name="vl_valor" value="<? echo $RS["vl_valor"]; ?>">
+              <input type="text" class="form-control" id="vl_valor" name="vl_valor" value="<? echo isset($RS["vl_valor"]) ? $RS["vl_valor"] : ''; ?>">
             </div>
 
           </div>
@@ -98,13 +104,10 @@ $RS = mysqli_fetch_assoc($RSS);
 
           <div class="row g-5">
             <div class="col-6">
-              <button class="w-100 btn btn-primary btn-lg" type="submit" onclick='window.open("menu.php?menu.php?modulo=listagem_orcamento");'>Salvar os dados</button>
+              <button class="w-100 btn btn-primary btn-lg" type="submit">Salvar</button>
             </div>
             <div class="col-3">
               <button class="w-100 btn btn-primary btn-lg" type="button" onclick='window.open("menu.php?acao=excluir&modulo=cadastro_orcamento&cd_orcamento=<?php echo $cd_orcamento;?>","_self");' >Excluir</button>
-            </div>
-            <div class="col-3">
-              <button class="w-100 btn btn-primary btn-lg" type="button" onclick='window.open("menu.php?modulo=cadastro_orcamento&cd_orcamento=0","_self");' >Novo</button>
             </div>
         </form>
       </div>
