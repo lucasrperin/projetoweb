@@ -1,6 +1,6 @@
 <?php
 include "conecta.php";
-$cd_produto = $_REQUEST["cd_produto"];
+$cd_produto = isset($_REQUEST["cd_produto"]) ? $_REQUEST["cd_produto"] : 0;
 $acao = isset($_GET['acao']) ? $_GET['acao'] : '';
 
 if ($acao == "excluir")
@@ -51,9 +51,13 @@ $SQL = "Select * from produtos where cd_produto = $cd_produto";
 $RSS = mysqli_query($conexao,$SQL) or print(mysqli_error());
 $RS = mysqli_fetch_assoc($RSS);	
 ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div class="py-5 text-center">
-      <h2>Cadastro do Produto Nº <?php echo $cd_produto; ?> </h2>
+    <div class="py-5 text-center d-flex justify-content-between align-items-center">
+        <a href="menu.php?modulo=listagem_produtos" class="btn btn-sm btn-primary">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </a>
+        <h2 class="h2 flex-grow-1 text-center">Cadastro Nº <?php echo $cd_produto; ?> </h2>
     </div>
     <div class="row g-5">
       <div class="col-md-12 col-lg-12">
@@ -62,9 +66,9 @@ $RS = mysqli_fetch_assoc($RSS);
           <input type='hidden' name='acao'       id='acao'       value='salvar'>
           <input type='hidden' name='modulo'     id='modulo'     value='cadastro_produto'>
           <div class="row g-3">
-            <div class="col-sm-6">
+            <div class="col-sm-6 ">
               <label for="firstName" class="form-label">Produto</label>
-              <input type="text" class="form-control" id="ds_produto" name="ds_produto" placeholder="seu nome" value="<?php echo $RS["ds_produto"]; ?>" required>
+              <input type="text" class="form-control" id="ds_produto" name="ds_produto" placeholder="Descrição" value="<?php echo isset($RS["ds_produto"]) ? $RS["ds_produto"] : ''; ?>" required>
               <div class="invalid-feedback">
                 Nome do produto é exigido.
               </div>
@@ -72,40 +76,33 @@ $RS = mysqli_fetch_assoc($RSS);
 
             <div class="col-sm-3">
               <label for="lastName" class="form-label">Quantidade</label>
-              <input type="text" class="form-control" id="vl_estoque" name="vl_estoque" placeholder="Quantidade" value="<?php echo $RS["vl_estoque"]; ?>" required>
+              <input type="text" class="form-control" id="vl_estoque" name="vl_estoque" placeholder="Quantidade" value="<?php echo isset($RS["vl_estoque"]) ? $RS["vl_estoque"] : '';  ?>" required>
             </div>
 
             <div class="col-sm-3">
               <label for="valor" class="form-label">Valor <span class="text-muted"></span></label>
-              <input type="text" class="form-control" id="vl_venda" name="vl_venda" placeholder="R$" value="<?php echo $RS["vl_venda"]; ?>">
+              <input type="text" class="form-control" id="vl_venda" name="vl_venda" placeholder="R$" value="<?php echo isset($RS["vl_venda"]) ? $RS["vl_venda"] : '';  ?>">
             </div>
 
             <div class="col-sm-4">
               <label for="lastName" class="form-label">Cor</label>
-              <input type="text" class="form-control" id="ds_cor" name="ds_cor" placeholder="Sua cor" value="<?php echo $RS["ds_cor"]; ?>" required>
+              <input type="text" class="form-control" id="ds_cor" name="ds_cor" placeholder="Sua cor" value="<?php echo isset($RS["ds_cor"]) ? $RS["ds_cor"] : ''; ?>" required>
             </div>
 
             <div class="col-sm-4">
               <label for="lastName" class="form-label">Categoria</label>
-              <input type="text" class="form-control" id="ds_categoria" name="ds_categoria" placeholder="Categoria" value="<?php echo $RS["ds_categoria"]; ?>" required>
+              <input type="text" class="form-control" id="ds_categoria" name="ds_categoria" placeholder="Categoria" value="<?php echo isset($RS["ds_categoria"]) ? $RS["ds_categoria"] : '';  ?>" required>
             </div>
 
             <div class="col-4">
               <label for="unidade" class="form-label">Unidade <span class="text-muted"></span></label>
-              <input type="unidade" class="form-control" id="ds_unidade" name="ds_unidade" placeholder="Unidade" value="<?php echo $RS["ds_unidade"]; ?>">
+              <input type="unidade" class="form-control" id="ds_unidade" name="ds_unidade" placeholder="Unidade" value="<?php echo isset($RS["ds_unidade"]) ? $RS["ds_unidade"] : ''; ?>">
             </div>
           </div>
           <hr class="my-4">
-          <div class="row g-5">
-            <div class="col-6">
-              <button class="w-100 btn btn-primary btn-lg" type="submit">Salvar os dados</button>
-            </div>
-            <div class="col-3">
-              <button class="w-100 btn btn-primary btn-lg" type="button" onclick='window.open("menu.php?acao=excluir&modulo=cadastro_produto&cd_produto=<?php echo $cd_produto;?>","_self");' >Excluir</button>
-            </div>
-            <div class="col-3">
-              <button class="w-100 btn btn-primary btn-lg" type="button" onclick='window.open("menu.php?modulo=cadastro_produto&cd_produto=0","_self");' >Novo</button>
-            </div>
+          <div class="col-2">
+              <button class="btn btn-sm btn-primary" type="submit">Salvar</button>
+              <button class="btn btn-sm btn-primary" type="button" onclick='window.open("menu.php?acao=excluir&modulo=cadastro_produto&cd_produto=<?php echo $cd_produto;?>","_self");' >Excluir</button>
         </form>
       </div>
     </div>

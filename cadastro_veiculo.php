@@ -81,12 +81,12 @@ $RS = mysqli_fetch_assoc($RSS);
                     </div>
                 </div>
                 <hr class="my-4">
-                <div class="row">
+                <div class="row g-2">
                     <div class="col-1">
-                        <button class="w-100 btn btn-primary btn-m" type="submit">Salvar </button>
+                        <button class="btn btn-sm btn-primary" type="submit">Salvar </button>
                     </div>
                     <div class="col-1">
-                        <button class="w-100 btn btn-primary btn-m" type="button" onclick='window.open("menu.php?acao=excluir&modulo=cadastro_veiculo&cd_veiculo=<?php echo $cd_veiculo; ?>","_self");'>Excluir</button>
+                        <button class="btn btn-sm btn-primary" type="button" onclick='window.open("menu.php?acao=excluir&modulo=cadastro_veiculo&cd_veiculo=<?php echo $cd_veiculo; ?>","_self");'>Excluir</button>
                     </div>
                 </div>
             </form>
