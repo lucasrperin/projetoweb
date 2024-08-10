@@ -11,17 +11,17 @@
           align-items: center; /* Centraliza verticalmente */
           justify-content: center; /* Centraliza horizontalmente */
           height: 100vh; /* Faz com que o corpo ocupe toda a altura da tela */
-          background-color: #B0C4DE;
+          background-color: #949de5;
         }
         .form-signin {
             width: 100%;
             max-width: 330px;
             padding: 15px;
             margin: auto;
-            background-color:	#008080;
-            border: 2px outset #000000; /* Adiciona uma borda sólida com cor cinza */
+            background-color:#494cfb;
+            border: 20px transparent #000000; /* Adiciona uma borda sólida com cor cinza */
             border-radius: 10px; /* Adiciona bordas arredondadas */
-            box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+            box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
         }
         .form-signin .form-floating {
             position: relative;
@@ -50,14 +50,16 @@
             border-top: 0;
             border-radius: 0 0 4px 4px;
         }
+        #title {
+            color: #ffff;
+        }
       
     </style>
 </head>
 <body class="text-center">
     <main class="form-signin">
-        <form action="http://localhost/Aula24-05/projeto/login.php" method="post">
-            <img class="mb-4" src="../erp_bootstrap_01/assets/brand/logo.jpg" alt="" width="135" height="100">
-            <h1 class="h3 mb-3 fw-normal">Login no sistema</h1>
+        <form action="http://localhost/projetoweb/login.php" method="post">
+            <h1 class="h3 mb-3 fw-normal" id="title">Acesso ao sistema</h1>
             <div class="form-floating">
                 <input type="email" class="form-control" id="ds_email" name="ds_email" placeholder="name@example.com">
                 <label for="ds_email">Email</label>
@@ -67,7 +69,6 @@
                 <label for="ds_senha">Senha</label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
-            <p class="mt-5 mb-3 text-muted">&copy;</p>
         </form>
     </main>
 </body>
