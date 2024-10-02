@@ -81,7 +81,7 @@ $RS = mysqli_fetch_assoc($RSS);
                             Nome do cliente é exigido.
                         </div>
                     </div>
-                    <div class="col-1">
+                    <div class="col-2">
                         <label for="cpf" class="form-label">CPF <span class="text-muted"></span></label>
                         <input type="text" class="form-control" id="ds_cpf" name="ds_cpf" placeholder="cpf" value="<?php echo isset($RS['ds_cpf']) ? $RS['ds_cpf'] : ''; ?>">
                         <div class="invalid-feedback">
@@ -137,7 +137,7 @@ $RS = mysqli_fetch_assoc($RSS);
                             Insira um sexo válido.
                         </div>
                     </div>
-                    <div class="col-1">
+                    <div class="col-2">
                         <label for="Nascimento" class="form-label">Nascimento <span class="text-muted"></span></label>
                         <input type="date" class="form-control" id="dt_nascimento" name="dt_nascimento" value="<?php echo isset($RS['dt_nascimento']) ? $RS['dt_nascimento'] : ''; ?>">
                         <div class="invalid-feedback">
@@ -146,13 +146,9 @@ $RS = mysqli_fetch_assoc($RSS);
                     </div>
                 </div>
                 <hr class="my-4">
-                <div class="row">
-                    <div class="col-1">
-                        <button class="w-100 btn btn-primary btn-m" type="submit">Salvar os dados</button>
-                    </div>
-                    <div class="col-1">
-                        <button class="w-100 btn btn-primary btn-m" type="button" onclick='window.open("menu.php?acao=excluir&modulo=cadastro_cliente&cd_cliente=<?php echo $cd_cliente; ?>", "_self");'>Excluir</button>
-                    </div>
+                <div class="col-2">
+                    <button class="btn btn-primary btn-sm btn"" type="submit">Salvar</button>
+                    <button class="btn btn-primary btn-sm btn"" type="button" onclick='window.open("menu.php?acao=excluir&modulo=cadastro_cliente&cd_cliente=<?php echo $cd_cliente; ?>", "_self");'>Excluir</button>
                 </div>
             </form>
         </div>

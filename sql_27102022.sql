@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `viagens` (
   `cd_viagem` int(11) NOT NULL AUTO_INCREMENT,
   `ds_origem` varchar(100) NOT NULL,
   `ds_destino` varchar(100) NOT NULL,
-  `ds_placa` varchar(7) DEFAULT NULL,
+  `ds_placa_vagem` varchar(7) DEFAULT NULL,
   `ds_carga` varchar(50) DEFAULT NULL,
   `ds_valor` decimal(18,4) DEFAULT NULL,
   `dt_inicio` date DEFAULT NULL,
