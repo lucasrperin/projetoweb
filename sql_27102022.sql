@@ -2,25 +2,6 @@ create schema projetoweb1;
 
 use projetoweb1;
 
--- Copiando estrutura para tabela sistema.cadastros
-CREATE TABLE IF NOT EXISTS `cadastros` (
-  `cd_nome` int(11) NOT NULL AUTO_INCREMENT,
-  `ds_nome` varchar(100) DEFAULT NULL,
-  `ds_fone` varchar(50) DEFAULT NULL,
-  `ds_email` varchar(50) DEFAULT NULL,
-  `ds_cidade` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`cd_nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
-
--- Copiando dados para a tabela sistema.cadastros: ~5 rows (aproximadamente)
-INSERT INTO `cadastros` (`cd_nome`, `ds_nome`, `ds_fone`, `ds_email`, `ds_cidade`) VALUES
-	(2, 'max sd sd sd ds', '1431414', NULL, NULL),
-	(3, 'carlos uberaba', '4864', 'asdf asdf asf ', '3245345 345 '),
-	(6, 'aa a  a a a a a', '5555555', NULL, NULL),
-	(7, 'd57d57d57', 'fgytfyty', '123412341234', 'xcicicicici '),
-	(11, 'mnnnnnn  ', 'fofofofo', 'eememe e mee ', 'cicic ici?c'),
-	(12, 'nn1n1n1n1 n1 ', 'ff11fg1f1f1f', 'e2e2e2e2e2e', 'cc8c78c8c8');
-
 -- Copiando estrutura para tabela sistema.clientes
 CREATE TABLE IF NOT EXISTS `clientes` (
   `cd_cliente` int(11) NOT NULL AUTO_INCREMENT,
@@ -99,8 +80,9 @@ INSERT INTO `produtos` (`cd_produto`, `ds_produto`, `vl_estoque`, `vl_venda` , `
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `cd_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `ds_usuario` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `ds_senha` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `ds_senha` varchar(80) COLLATE latin1_general_ci NOT NULL,
   `ds_email` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
+  `permissao` smallint DEFAULT 0 CHECK (permissao IN (0, 1)),
   PRIMARY KEY (`cd_usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 

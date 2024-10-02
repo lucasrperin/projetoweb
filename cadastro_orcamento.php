@@ -98,13 +98,10 @@ $RS = mysqli_fetch_assoc($RSS);
 
           <div class="row g-5">
             <div class="col-6">
-              <button class="w-100 btn btn-primary btn-lg" type="submit" onclick='window.open("menu.php?menu.php?modulo=listagem_orcamento");'>Salvar os dados</button>
+              <button class="w-100 btn btn-primary btn-lg" type="submit" onclick='window.open("menu.php?modulo=listagem_orcamento");'>Salvar os dados</button>
             </div>
             <div class="col-3">
               <button class="w-100 btn btn-primary btn-lg" type="button" onclick='window.open("menu.php?acao=excluir&modulo=cadastro_orcamento&cd_orcamento=<?php echo $cd_orcamento;?>","_self");' >Excluir</button>
-            </div>
-            <div class="col-3">
-              <button class="w-100 btn btn-primary btn-lg" type="button" onclick='window.open("menu.php?modulo=cadastro_orcamento&cd_orcamento=0","_self");' >Novo</button>
             </div>
         </form>
       </div>

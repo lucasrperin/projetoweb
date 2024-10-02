@@ -129,6 +129,13 @@
               Viagens
             </a>
           </li>
+      <li class="nav-item">
+        <a <?php if ($modulo=="ws") { echo " class='nav-link active' aria-current='page'"; } else { echo " class='nav-link' "; } ?>
+          href="menu.php?modulo=ws">
+          <span data-feather="map-pin" class="align-text-bottom"></span>
+          Web Service
+        </a>
+      </li>
         </ul>
 
        

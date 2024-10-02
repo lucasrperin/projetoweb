@@ -1,0 +1,68 @@
+/* Define a largura máxima da seção topo e centraliza o conteúdo */
+.topo { 
+    max-width: 80%;
+    margin: 0 auto;
+    padding-left: 7rem;
+}
+
+/* Estilo para a seção de título */
+.title.h2 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Estilo para a tabela */
+.topo table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Estilo para as células de cabeçalho da tabela */
+.topo thead th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+    padding: 5px;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Estilo para as células da tabela */
+td {
+    padding: 11px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Alterna as cores de fundo para as linhas da tabela */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Estilo para alinhar a tabela e ajustar sua largura */
+#example {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Estilo para ajustar o layout em dispositivos menores */
+@media (max-width: 768px) {
+    main {
+        padding: 10px;
+    }
+
+    h1.h2 {
+        font-size: 1.5rem;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+}
