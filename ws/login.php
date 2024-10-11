@@ -1,42 +1,40 @@
 <?php
 session_start();
-include '../conecta.php';
+include "../conecta.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['username']; // Campo de email
     $password = $_POST['password']; // Campo de senha
 
-    // Consulta SQL usando prepared statement para buscar o usuário pelo email
-    $sql = "SELECT CD_USUARIO, DS_SENHA FROM USUARIOS WHERE ds_email = ?";
-    if ($stmt = $conn->prepare($sql)) {
-        // Vincula o parâmetro email
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    if (isset($conexao) && $conexao instanceof mysqli) {
+        $sql = "SELECT cd_usuario, ds_senha FROM USUARIOS WHERE ds_email = ?";
+        if ($stmt = $conexao->prepare($sql)) {
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-        // Verifica se o email foi encontrado
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            
-            // Verifique se a senha fornecida corresponde à senha hash no banco de dados
-            if (password_verify($password, $row['DS_SENHA'])) {
-                // Armazena o ID do usuário na sessão
-                $_SESSION['ID_USUARIO'] = $row['CD_USUARIO'];
-                header("Location: menu_ws.php");
-                exit();
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                if (password_verify($password, $row['ds_senha'])) {
+                    $_SESSION['ID_USUARIO'] = $row['cd_usuario'];
+                    $_SESSION['usuario'] = $email; // Armazena o email na sessão
+                    header("Location: menu_ws.php");
+                    exit();
+                } else {
+                    $_SESSION['error_message'] = "<p class='error'>Senha incorreta</p>";
+                }
             } else {
-                // Senha incorreta
-                $_SESSION['error_message'] = "<p class='error'>Senha incorreta</p>";
+                $_SESSION['error_message'] = "<p class='error'>Usuário não encontrado</p>";
             }
-        } else {
-            // Usuário não encontrado
-            $_SESSION['error_message'] = "<p class='error'>Usuário não encontrado</p>";
-        }
 
-        // Fecha o statement
-        $stmt->close();
+            $stmt->close();
+        } else {
+            $_SESSION['error_message'] = "<p class='error'>Erro ao preparar a consulta: " . $conexao->error . "</p>";
+        }
+    } else {
+        $_SESSION['error_message'] = "<p class='error'>Erro de conexão com o banco de dados.</p>";
     }
-    // Redireciona de volta para a página de login
+
     header("Location: login.php");
     exit();
 }

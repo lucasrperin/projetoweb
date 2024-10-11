@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verificar se o usuário ou email já existem
     $sql = "SELECT * FROM USUARIOS WHERE ds_usuario = ? OR ds_email = ?";
-    $stmt = $conn->prepare($sql);
+    $stmt = $conexao->prepare($sql);
     $stmt->bind_param("ss", $username, $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Inserir o novo usuário
         $sql = "INSERT INTO USUARIOS (ds_usuario, ds_email, ds_senha) VALUES (?, ?, ?)";
-        $stmt = $conn->prepare($sql);
+        $stmt = $conexao->prepare($sql);
         $stmt->bind_param("sss", $username, $email, $password);
 
         if ($stmt->execute() === TRUE) {

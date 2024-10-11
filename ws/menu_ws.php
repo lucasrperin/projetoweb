@@ -1,30 +1,33 @@
 <?php
 session_start();
-include '../conecta.php'; // Inclua a conexão com o banco de dados
+include '../conecta.php';
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['usuario'])) {
     header("Location: login.php");
     exit();
 }
 
-// Obtém o cd_usuario do banco de dados a partir do email armazenado na sessão
 $email = $_SESSION['usuario'];
-$sql = "SELECT cd_usuario FROM usuarios WHERE ds_email = ?";
+$sql = "SELECT cd_usuario FROM USUARIOS WHERE ds_email = ?";
 
-if ($stmt = $conn->prepare($sql)) {
-    $stmt->bind_param("s", $email); // Vincula o email como parâmetro
-    $stmt->execute();               // Executa a consulta
-    $stmt->bind_result($cd_usuario); // Associa a variável ao resultado
-    $stmt->fetch();                 // Obtém o resultado
+if ($stmt = $conexao->prepare($sql)) {
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->bind_result($cd_usuario);
+    $stmt->fetch();
 
-    // Armazena cd_usuario na sessão
-    $_SESSION['cd_usuario'] = $cd_usuario;
+    if ($cd_usuario) { // Verifica se o cd_usuario foi obtido
+        $_SESSION['cd_usuario'] = $cd_usuario;
+    } else {
+        // Opcional: Se não encontrar o cd_usuario, redirecione de volta para o login
+        header("Location: login.php");
+        exit();
+    }
 
-    $stmt->close(); // Fecha o statement
+    $stmt->close();
 }
 
-$conn->close(); // Fecha a conexão com o banco de dados
+$conexao->close();
 ?>
 
 <!DOCTYPE html>
@@ -39,10 +42,8 @@ $conn->close(); // Fecha a conexão com o banco de dados
         <li>
             <a href="cadastro_cliente.php?cd_usuario=<?php echo urlencode($_SESSION['cd_usuario']); ?>">Clientes</a>
         </li>
-        <!-- Adicione mais itens de menu conforme necessário -->
     </ul>
     <p>Bem-vindo, <?php echo htmlspecialchars($_SESSION['usuario']); ?>!</p>
-    <a href="login.php">Sair</a> <!-- Link para logout -->
-    
+    <a href="login.php">Sair</a>
 </body>
 </html>
