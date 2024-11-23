@@ -18,3 +18,20 @@
 [2024-10-11 22:58:23] - IP: ::1 - Acesso ao orçamento ID: 2
 [2024-10-11 23:12:58] - IP: ::1 - Acesso à listagem de todos os orçamentos
 [2024-10-11 23:28:29] - IP: ::1 - Acesso à listagem de todos os clientes
+[2024-10-25 22:55:00] - IP: 192.168.0.109 - Acesso à listagem de todos os produtos
+[2024-10-25 22:55:03] - IP: 192.168.0.114 - Acesso à listagem de todos os clientes
+[2024-10-25 22:55:12] - IP: 192.168.0.112 - Acesso ao cliente ID: 1
+[2024-10-25 22:58:59] - IP: 192.168.0.109 - Acesso à listagem de todos os clientes
+[2024-10-25 22:59:32] - IP: 192.168.0.109 - Acesso à listagem de todos os clientes
+[2024-10-25 23:01:34] - IP: 192.168.0.114 - Acesso à listagem de todos os produtos
+[2024-10-25 23:01:39] - IP: 192.168.0.114 - Acesso à listagem de todos os orçamentos
+[2024-10-29 00:15:17] - IP: 10.0.3.86 - Acesso à listagem de todos os produtos
+[2024-10-29 00:15:58] - IP: 10.0.3.86 - Acesso à listagem de todos os produtos
+[2024-10-29 00:17:14] - IP: 10.0.3.86 - Acesso à listagem de todos os produtos
+[2024-10-29 00:18:16] - IP: 10.0.3.86 - Acesso à listagem de todos os produtos
+[2024-10-29 00:18:19] - IP: 10.0.3.86 - Acesso à listagem de todos os produtos
+[2024-10-29 00:19:31] - IP: 10.0.3.86 - Acesso à listagem de todos os produtos
+[2024-10-29 00:20:06] - IP: 10.0.3.86 - Acesso à listagem de todos os produtos
+[2024-10-29 00:23:04] - IP: 10.0.3.86 - Acesso à listagem de todos os produtos
+[2024-10-29 00:23:57] - IP: 10.0.3.86 - Acesso à listagem de todos os produtos
+[2024-10-29 00:24:03] - IP: 10.0.3.86 - Acesso à listagem de todos os produtos

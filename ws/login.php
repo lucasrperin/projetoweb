@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password']; // Campo de senha
 
     if (isset($conexao) && $conexao instanceof mysqli) {
-        $sql = "SELECT cd_usuario, ds_senha FROM USUARIOS WHERE ds_email = ?";
+        $sql = "SELECT cd_usuario, ds_senha, permissao FROM USUARIOS WHERE ds_email = ?";
         if ($stmt = $conexao->prepare($sql)) {
             $stmt->bind_param("s", $email);
             $stmt->execute();
@@ -15,11 +15,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
+                
+                // Primeiro, verificar a senha
                 if (password_verify($password, $row['ds_senha'])) {
-                    $_SESSION['ID_USUARIO'] = $row['cd_usuario'];
-                    $_SESSION['usuario'] = $email; // Armazena o email na sessão
-                    header("Location: menu_ws.php");
-                    exit();
+                    // Verificar a permissão **após** a senha ser validada
+                    if ($row['permissao'] == 0) {
+                        $_SESSION['error_message'] = "<p class='error'>Usuário não possui acesso ao Web Service.</p>";
+                    } else {
+                        $_SESSION['ID_USUARIO'] = $row['cd_usuario'];
+                        $_SESSION['usuario'] = $email; // Armazena o email na sessão
+                        header("Location: menu_ws.php");
+                        exit();
+                    }
                 } else {
                     $_SESSION['error_message'] = "<p class='error'>Senha incorreta</p>";
                 }
@@ -39,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -88,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <a href="https://www.instagram.com" target="_blank">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
         </a>
-        <p>&copy; 2024 Site de Eventos. Todos os direitos reservados.</p>
+        <p>&copy; 2024 WEB Service. Todos os direitos reservados.</p>
     </footer>
 </body>
 </html>

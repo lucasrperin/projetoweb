@@ -103,6 +103,7 @@ $RS = mysqli_fetch_assoc($RSS);
           <div class="col-2">
               <button class="btn btn-sm btn-primary" type="submit">Salvar</button>
               <button class="btn btn-sm btn-primary" type="button" onclick='window.open("menu.php?acao=excluir&modulo=cadastro_produto&cd_produto=<?php echo $cd_produto;?>","_self");' >Excluir</button>
+          </div>
         </form>
       </div>
     </div>
