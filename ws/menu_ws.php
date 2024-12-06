@@ -63,6 +63,12 @@ $conexao->close();
                     <a href="#" id="linkProduto" onclick="navigateTo('produto')">Produtos</a>
                     <input type="number" id="idProduto" placeholder="ID" class="hidden" disabled>
                 </li>
+                <li>
+                    <a href="insert_cliente.php" >WS Eduardo</a>
+                </li>
+                <li>
+                    <a href="insert_cliente1.php" >WS Cauã</a>
+                </li>
                 <li class="checkbox-item">
                     <label for="informarIdCheckbox">
                         <input type="checkbox" id="informarIdCheckbox"> Informar ID
@@ -113,6 +119,10 @@ $conexao->close();
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
+
+        
+
+        
     </script>
 </body>
 </html>
